@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/canvasFragment"
-        android:name="com.example.androidvirtualinput.CanvasFragment"
+        android:name="com.example.androidvirtualinput.canvas.CanvasFragment"
         android:label="CanvasFragment" />
 </navigation>

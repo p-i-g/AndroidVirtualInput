@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput;
+package com.example.androidvirtualinput.canvas;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.androidvirtualinput.R;
 
 public class CanvasFragment extends Fragment {
     private ConstraintLayout canvas;
@@ -27,12 +29,9 @@ public class CanvasFragment extends Fragment {
         canvas = view.findViewById(R.id.canvasView);
         centerText = view.findViewById(R.id.canvasText);
 
-        canvas.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                centerText.setText("X: " + motionEvent.getX() + "Y: " + motionEvent.getY() + "Pressure: " + motionEvent.getPressure());
-                return true;
-            }
+        canvas.setOnTouchListener((view1, motionEvent) -> {
+            centerText.setText("X: " + motionEvent.getX() + "Y: " + motionEvent.getY() + "Pressure: " + motionEvent.getPressure());
+            return true;
         });
         return view;
     }
