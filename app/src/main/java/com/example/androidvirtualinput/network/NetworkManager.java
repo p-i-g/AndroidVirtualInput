@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+//for managing the socket and output streams
 public class NetworkManager {
     private final PrintWriter out; //for printing to socket output stream
 
@@ -19,6 +19,7 @@ public class NetworkManager {
         InetAddress serverAddress = InetAddress.getByName(ip);
         Socket socket = new Socket(serverAddress, port);
         out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
+        //todo: handshake
         //initialized the executor
         executor = Executors.newSingleThreadExecutor();
     }
