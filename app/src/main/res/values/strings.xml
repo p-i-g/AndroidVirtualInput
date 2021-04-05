@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">AndroidVirtualInput</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="canvas_hover">Hover at (%f, %f)</string>
+    <string name="canvas_touch">Touch at (%f, %f), pressure: %f</string>
 </resources>

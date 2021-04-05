@@ -22,19 +22,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //todo: handle exception, this should be done in network manager
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    networkManager = new NetworkManager(PORT, IP);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        new Thread(() -> {
+            try {
+                networkManager = new NetworkManager(PORT, IP);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }).start();
     }
     //this feels a bit workaroundish
     public NetworkManager getNetworkManager(){
         return networkManager;
+    }
+
+    @Override
+    public void onPause() {
+        networkManager.closeConnection();
+        super.onPause();
     }
 }

@@ -7,13 +7,13 @@ public class CanvasAction extends InputAction {
     public static final int HOVER = 0;
     public static final int DOWN = 1;
 
-    private final float posX;
-    private final float posY;
+    private final double posX;
+    private final double posY;
     private final double pressure;
 
     private final int type;
 
-    public CanvasAction(float posX, float posY, int type, double pressure) {
+    public CanvasAction(double posX, double posY, int type, double pressure) {
         this.posX = posX;
         this.posY = posY;
         this.pressure = pressure;
