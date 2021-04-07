@@ -2,24 +2,20 @@ package com.example.androidvirtualinput.canvas;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.androidvirtualinput.MainActivity;
-import com.example.androidvirtualinput.R;
+import com.example.androidvirtualinput.ui.MainActivity;
 
 //I probably shouldn't extend constraint layout
 //Basically constraint layout but with on touch and on hover overridden
 public class CanvasView extends ConstraintLayout {
     private boolean palmRejection = true;
-    private TextView centerText;
     //center text need not exist.
     //this is just for this program only/doing it this way is going to kill anyone who tries to use this later
 
@@ -76,9 +72,5 @@ public class CanvasView extends ConstraintLayout {
 //        centerText.setText(getContext().getString(R.string.canvas_hover, posX, posY));
         ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
         return true;
-    }
-
-    public void setPalmRejection(boolean palmRejection) {
-        this.palmRejection = palmRejection;
     }
 }

@@ -22,7 +22,6 @@ public class NetworkManager {
         Socket socket = new Socket(serverAddress, port);
         out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
         in = new Scanner(socket.getInputStream());
-        //todo: handshake
         //I don't know the protocol for this.
         //This works I guess
         out.println("Android Input Device");

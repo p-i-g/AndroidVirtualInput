@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/canvasFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/connectFragment">
 
     <fragment
         android:id="@+id/canvasFragment"
         android:name="com.example.androidvirtualinput.canvas.CanvasFragment"
         android:label="CanvasFragment" />
+    <fragment
+        android:id="@+id/connectFragment"
+        android:name="com.example.androidvirtualinput.ui.ConnectFragment"
+        android:label="fragment_connect"
+        tools:layout="@layout/fragment_connect" >
+        <action
+            android:id="@+id/action_connectFragment_to_canvasFragment"
+            app:destination="@id/canvasFragment" />
+    </fragment>
 </navigation>
