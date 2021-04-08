@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidvirtualinput.R;
-
+//this thing need not exist
+//it literally exists as a holder for canvas view
 public class CanvasFragment extends Fragment {
 
     @Override
@@ -21,7 +22,7 @@ public class CanvasFragment extends Fragment {
                              Bundle savedInstanceState) {
         //        centerText = view.findViewById(R.id.canvasText);
 
-//        canvas.setOnTouchListener((view1, motionEvent) -> {//todo: fix warnings, out of view logic
+//        canvas.setOnTouchListener((view1, motionEvent) -> {
 //            if(palmRejection){
 //                if(motionEvent.getToolType(getId()) == MotionEvent.TOOL_TYPE_STYLUS){
 //                    double posX = motionEvent.getX() / canvas.getWidth();
