@@ -4,10 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.androidvirtualinput.R;
+import com.example.androidvirtualinput.network.NetworkManager;
+import com.example.androidvirtualinput.ui.MainActivity;
+
+import java.io.IOException;
+
 //this thing need not exist
 //it literally exists as a holder for canvas view
 public class CanvasFragment extends Fragment {
@@ -47,5 +53,19 @@ public class CanvasFragment extends Fragment {
 //            return true;
 //        });
         return inflater.inflate(R.layout.fragment_canvas, container, false);
+    }
+
+    @Override
+    public void onPause() {
+        NetworkManager networkManager = ((MainActivity) getActivity()).getNetworkManager();
+        if (networkManager != null) {
+            try {
+                networkManager.closeConnection();
+                ((MainActivity) getActivity()).setNetworkManager(null);
+            } catch (IOException ioException) {
+                Toast.makeText(getContext(), "Failed to close connection", Toast.LENGTH_LONG).show();
+            }
+        }
+        super.onPause();
     }
 }

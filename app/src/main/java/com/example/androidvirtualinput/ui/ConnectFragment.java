@@ -36,15 +36,18 @@ public class ConnectFragment extends Fragment {
                     NetworkManager networkManager = new NetworkManager(port, ip);//throws unknown host, io exception
                     //this is bad
                     ((MainActivity) getActivity()).setNetworkManager(networkManager);
-                    Navigation.findNavController(view).navigate(R.id.action_connectFragment_to_canvasFragment);
+                    getActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.action_connectFragment_to_canvasFragment));
                 }catch (NumberFormatException numberFormatException){
-                    Toast.makeText(getContext(), "Invalid Port Number", Toast.LENGTH_LONG).show();
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid Port Number", Toast.LENGTH_LONG).show());
+                    numberFormatException.printStackTrace();
                 }catch (UnknownHostException unknownHostException){
-                    Toast.makeText(getContext(), "Invalid IP Address", Toast.LENGTH_LONG).show();
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid IP Address", Toast.LENGTH_LONG).show());
+                    unknownHostException.printStackTrace();
                 }catch (IOException ioException){
-                    Toast.makeText(getContext(), "Failed to Connect to Server", Toast.LENGTH_LONG).show();
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Failed to Connect to Server", Toast.LENGTH_LONG).show());
+                    ioException.printStackTrace();
                 }
-            });
+            }).start();
         });
         return view;
     }

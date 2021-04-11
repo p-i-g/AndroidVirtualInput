@@ -1,11 +1,14 @@
 package com.example.androidvirtualinput.ui;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidvirtualinput.R;
 import com.example.androidvirtualinput.network.NetworkManager;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onPause() {
-        networkManager.closeConnection();
+        if(networkManager != null) {
+            try {
+                networkManager.closeConnection();
+                networkManager = null;
+            } catch (IOException ioException) {
+                Toast.makeText(this, "Failed to close connection", Toast.LENGTH_LONG).show();
+            }
+        }
         super.onPause();
     }
     //this is bad but I don't think I can parcelize the network manager
