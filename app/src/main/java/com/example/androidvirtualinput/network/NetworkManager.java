@@ -2,6 +2,8 @@ package com.example.androidvirtualinput.network;
 
 import android.util.Log;
 
+import com.example.androidvirtualinput.macro.MacroAction;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -43,6 +45,7 @@ public class NetworkManager {
             socket.close();
             throw new IOException("Handshake failed");
         }
+        printAction(new MacroAction("test:65,66"));
     }
 
     //closes the socket properly and shutdowns the executor

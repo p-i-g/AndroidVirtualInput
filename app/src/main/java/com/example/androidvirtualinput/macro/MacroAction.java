@@ -36,7 +36,7 @@ public class MacroAction extends InputAction {
 
         for (int i = 0; i < keys.size(); i++){
             result.append(keys.get(i));
-            if(i != keys.size()){
+            if(i < keys.size() - 1){
                 result.append(",");
             }
         }
@@ -51,7 +51,7 @@ public class MacroAction extends InputAction {
 
         for (int i = 0; i < keys.size(); i++){
             result.append(keys.get(i));
-            if(i != keys.size()){
+            if(i < keys.size() - 1){
                 result.append(",");
             }
         }

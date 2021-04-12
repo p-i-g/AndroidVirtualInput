@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 networkManager.closeConnection();
                 networkManager = null;
-            } catch (IOException ioException) {
+            } catch (IOException | NullPointerException exception) {
                 Toast.makeText(this, "Failed to close connection", Toast.LENGTH_LONG).show();
             }
         }

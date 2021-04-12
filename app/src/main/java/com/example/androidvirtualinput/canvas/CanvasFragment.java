@@ -63,11 +63,10 @@ public class CanvasFragment extends Fragment {
             try {
                 networkManager.closeConnection();
                 ((MainActivity) getActivity()).setNetworkManager(null);
-            } catch (IOException ioException) {
+            } catch (IOException | NullPointerException exception) {
                 Toast.makeText(getContext(), "Failed to close connection", Toast.LENGTH_LONG).show();
             }
         }
-        Navigation.findNavController(getView()).navigate(R.id.action_canvasFragment_to_connectFragment);
         super.onPause();
     }
 }
