@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.androidvirtualinput.R;
 import com.example.androidvirtualinput.network.NetworkManager;
@@ -66,6 +67,7 @@ public class CanvasFragment extends Fragment {
                 Toast.makeText(getContext(), "Failed to close connection", Toast.LENGTH_LONG).show();
             }
         }
+        Navigation.findNavController(getView()).navigate(R.id.action_canvasFragment_to_connectFragment);
         super.onPause();
     }
 }
