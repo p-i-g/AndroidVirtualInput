@@ -31,10 +31,11 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
     }
 
     public void initialize(){
+        //make the button round
         setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.button_background));
         setOnClickListener(this);
     }
-
+    //the only reason why this class exists
     @Override
     public void onClick(View v) {
         ((MainActivity) getContext()).getNetworkManager().printAction(buttonAction);
