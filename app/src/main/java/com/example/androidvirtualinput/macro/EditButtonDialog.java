@@ -27,11 +27,12 @@ public class EditButtonDialog extends DialogFragment {
     DialogClickListener listener;
     ArrayList<EditText> keyInputs;
     TextView nameTextView;
+    EditText nameEditText;
     LinearLayout linearLayout;
     //for interfacing with the macro button
     public interface DialogClickListener{
-        void onPositiveClick(DialogFragment dialog);
-        void onNegativeClick(DialogFragment dialog);
+        void onPositiveClick(EditButtonDialog dialog);
+        void onNegativeClick(EditButtonDialog dialog);
     }
     @NotNull
     @Override
@@ -41,6 +42,7 @@ public class EditButtonDialog extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View root = inflater.inflate(R.layout.dialog_layout, null);
         nameTextView = root.findViewById(R.id.textView);
+        nameTextView = root.findViewById(R.id.editText);
         //other lines for keys will be added
         linearLayout = root.findViewById(R.id.linearLayout);
         builder.setTitle("Macro Settings").setView(root).setPositiveButton("Save", (dialog, which) -> listener.onPositiveClick(this)).setNegativeButton("Cancel", ((dialog, which) -> listener.onNegativeClick(this)));

@@ -7,9 +7,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class MacroAction extends InputAction {
-    private final ArrayList<Integer> keys;
+    private ArrayList<Integer> keys;
 
-    private final String name;
+    private String name;
 
     public MacroAction(ArrayList<Integer> keys, String name) {
         this.keys = keys;
@@ -27,6 +27,11 @@ public class MacroAction extends InputAction {
         for (String splitForKey : splitForKeys) {
             keys.add(Integer.parseInt(splitForKey));
         }
+    }
+    //literally the same as the constructor
+    public void changeAction(ArrayList<Integer> keys, String name) {
+        this.keys = keys;
+        this.name = name;
     }
     //for sending over the socket
     //MACRO:KEY1,KEY2,KEY3...
