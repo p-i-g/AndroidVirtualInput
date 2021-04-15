@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class EditButtonDialog extends DialogFragment {
     DialogClickListener listener;
     ArrayList<EditText> keyInputs;
-    TextView nameTextView;
     EditText nameEditText;
     LinearLayout linearLayout;
     //for interfacing with the macro button
@@ -41,7 +40,6 @@ public class EditButtonDialog extends DialogFragment {
         //for inflating the alert layout
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View root = inflater.inflate(R.layout.dialog_layout, null);
-        nameTextView = root.findViewById(R.id.textView);
         nameEditText = root.findViewById(R.id.editText);
         //other lines for keys will be added
         linearLayout = root.findViewById(R.id.linearLayout);

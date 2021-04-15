@@ -35,16 +35,16 @@ public class ConnectFragment extends Fragment {
                     String ip = editTextIp.getText().toString();
                     NetworkManager networkManager = new NetworkManager(port, ip);//throws unknown host, io exception
                     //this is bad
-                    ((MainActivity) getActivity()).setNetworkManager(networkManager);
+                    ((MainActivity) requireActivity()).setNetworkManager(networkManager);
                     getActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.action_connectFragment_to_canvasFragment));
                 }catch (NumberFormatException numberFormatException){
-                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid Port Number", Toast.LENGTH_LONG).show());
+                    requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid Port Number", Toast.LENGTH_LONG).show());
                     numberFormatException.printStackTrace();
                 }catch (UnknownHostException unknownHostException){
-                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid IP Address", Toast.LENGTH_LONG).show());
+                    requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid IP Address", Toast.LENGTH_LONG).show());
                     unknownHostException.printStackTrace();
                 }catch (IOException ioException){
-                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Failed to Connect to Server", Toast.LENGTH_LONG).show());
+                    requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Failed to Connect to Server", Toast.LENGTH_LONG).show());
                     ioException.printStackTrace();
                 }
             }).start();

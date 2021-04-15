@@ -14,7 +14,7 @@ import com.example.androidvirtualinput.ui.MainActivity;
 //I probably shouldn't extend constraint layout
 //Basically constraint layout but with on touch and on hover overridden
 public class CanvasView extends ConstraintLayout {
-    private boolean palmRejection = true;
+    private final boolean palmRejection = true;
     //center text need not exist.
     //this is just for this program only/doing it this way is going to kill anyone who tries to use this later
 
@@ -59,7 +59,7 @@ public class CanvasView extends ConstraintLayout {
         double posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
 //        centerText.setText(getContext().getString(R.string.canvas_touch, posX, posY, pressure));
-//todo        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.DOWN, pressure));//this cast is bad
+        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.DOWN, pressure));//this cast is bad
         return true;
     }
     //for hover, corresponds to InContact not set in the windows thing
@@ -69,7 +69,7 @@ public class CanvasView extends ConstraintLayout {
         float posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
 //        centerText.setText(getContext().getString(R.string.canvas_hover, posX, posY));
-//todo        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
+        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
         return true;
     }
 }

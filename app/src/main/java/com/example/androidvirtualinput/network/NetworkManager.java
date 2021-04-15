@@ -1,9 +1,5 @@
 package com.example.androidvirtualinput.network;
 
-import android.util.Log;
-
-import com.example.androidvirtualinput.macro.MacroAction;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -16,16 +12,15 @@ import java.util.concurrent.Executors;
 
 //for managing the socket and output streams
 public class NetworkManager {
-    private PrintWriter out; //for printing to socket output stream
-    private Scanner in;
-    private Socket socket;
+    private final PrintWriter out; //for printing to socket output stream
+    private final Scanner in;
     private static final int TIMEOUT = 5000;
 
-    ExecutorService executor;
+    final ExecutorService executor;
 
     //this should  be executed in a new thread
     public NetworkManager(int port, String ip) throws IOException {
-        //initialized the executor
+        //initialize the executor
         executor = Executors.newFixedThreadPool(1);
         //initializes the socket along with the output stream
         InetSocketAddress serverAddress = new InetSocketAddress(ip, port);
@@ -45,15 +40,12 @@ public class NetworkManager {
             socket.close();
             throw new IOException("Handshake failed");
         }
-        printAction(new MacroAction("test:65,66"));
     }
 
     //closes the socket properly and shutdowns the executor
-    public void closeConnection() throws IOException {
+    public void closeConnection() throws IOException{
         in.close();
         out.close();
-        socket.close();
-
 
         executor.shutdown();
     }
