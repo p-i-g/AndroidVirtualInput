@@ -40,12 +40,15 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         //show dialog
         setOnLongClickListener(v -> {
             if(getContext() instanceof FragmentActivity) {
-                new EditButtonDialog().show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit settings");
+                EditButtonDialog dialog = new EditButtonDialog();
+                dialog.setListener(this);
+                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit settings");
             }
             return true;
         });
         //get the mapping array
         keyMapping = getResources().getStringArray(R.array.keys);
+        setSingleLine(true);
     }
     //the only reason why this class exists
     @Override
@@ -66,7 +69,7 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
             key = dialog.keyInputs.get(i).toString();
             //iterating through the mapping
             for(int j = 0; j < keyMapping.length; j++){
-                if(keyMapping[j].equals(key)){
+                if(keyMapping[j].equals(key) && !key.equals("null")){
                     keys.add(j);
                 }
             }

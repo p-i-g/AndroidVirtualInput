@@ -42,11 +42,12 @@ public class EditButtonDialog extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View root = inflater.inflate(R.layout.dialog_layout, null);
         nameTextView = root.findViewById(R.id.textView);
-        nameTextView = root.findViewById(R.id.editText);
+        nameEditText = root.findViewById(R.id.editText);
         //other lines for keys will be added
         linearLayout = root.findViewById(R.id.linearLayout);
         builder.setTitle("Macro Settings").setView(root).setPositiveButton("Save", (dialog, which) -> listener.onPositiveClick(this)).setNegativeButton("Cancel", ((dialog, which) -> listener.onNegativeClick(this)));
         //add the rows for keys
+        keyInputs = new ArrayList<>();
         addRow("Control", inflater, 1);
         return builder.create();
     }
@@ -63,6 +64,7 @@ public class EditButtonDialog extends DialogFragment {
         key.setAdapter(adapter);
         //add a new row
         key.addTextChangedListener(new TextWatcher() {
+            private boolean changed = false;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -70,8 +72,9 @@ public class EditButtonDialog extends DialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() != 0){
+                if(s.length() != 0 && !changed && !s.equals("null")){
                     addRow("Z", inflater, ++count);
+                    changed = true;
                 }
             }
 
@@ -81,5 +84,9 @@ public class EditButtonDialog extends DialogFragment {
             }
         });
         linearLayout.addView(row);
+    }
+
+    public void setListener(DialogClickListener listener) {
+        this.listener = listener;
     }
 }

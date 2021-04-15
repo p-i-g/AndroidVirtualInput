@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    android:background="?attr/backgroundColor">
 
     <com.example.androidvirtualinput.canvas.CanvasView
         android:id="@+id/canvasView"
@@ -63,8 +63,10 @@
 
     <com.example.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/button_background"
         android:text="hi"
         app:layout_constraintBottom_toTopOf="@+id/macroButton2"
@@ -75,8 +77,9 @@
 
     <com.example.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:text="Button2"
         app:layout_constraintBottom_toTopOf="@+id/macroButton3"
         app:layout_constraintEnd_toEndOf="@+id/macroButton"
@@ -85,8 +88,9 @@
 
     <com.example.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:text="Button2"
         app:layout_constraintBottom_toTopOf="@+id/macroButton4"
         app:layout_constraintEnd_toEndOf="@+id/macroButton2"
@@ -95,22 +99,13 @@
 
     <com.example.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:text="Button2"
-        app:layout_constraintBottom_toTopOf="@+id/macroButton5"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="@+id/macroButton3"
         app:layout_constraintStart_toStartOf="@+id/macroButton3"
         app:layout_constraintTop_toBottomOf="@+id/macroButton3" />
-
-    <com.example.androidvirtualinput.macro.MacroButton
-        android:id="@+id/macroButton5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:text="Button2"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="@+id/macroButton4"
-        app:layout_constraintStart_toStartOf="@+id/macroButton4"
-        app:layout_constraintTop_toBottomOf="@+id/macroButton4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

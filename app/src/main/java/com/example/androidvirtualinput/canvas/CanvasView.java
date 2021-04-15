@@ -59,7 +59,7 @@ public class CanvasView extends ConstraintLayout {
         double posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
 //        centerText.setText(getContext().getString(R.string.canvas_touch, posX, posY, pressure));
-        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.DOWN, pressure));//this cast is bad
+//todo        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.DOWN, pressure));//this cast is bad
         return true;
     }
     //for hover, corresponds to InContact not set in the windows thing
@@ -69,7 +69,7 @@ public class CanvasView extends ConstraintLayout {
         float posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
 //        centerText.setText(getContext().getString(R.string.canvas_hover, posX, posY));
-        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
+//todo        ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
         return true;
     }
 }
