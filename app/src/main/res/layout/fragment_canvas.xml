@@ -9,7 +9,6 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <com.example.androidvirtualinput.canvas.CanvasView
-        android:id="@+id/canvasView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/canvas_border"

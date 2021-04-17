@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidvirtualinput.R;
+import com.example.androidvirtualinput.macro.MacroButton;
 import com.example.androidvirtualinput.network.NetworkManager;
 import com.example.androidvirtualinput.ui.MainActivity;
 
@@ -55,7 +56,12 @@ public class CanvasFragment extends Fragment {
 //        });
         View root = inflater.inflate(R.layout.fragment_canvas, container, false);
         requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+        //set button preferences
+        ((MacroButton)root.findViewById(R.id.macroButton)).setButtonId("Button1");
+        ((MacroButton)root.findViewById(R.id.macroButton2)).setButtonId("Button2");
+        ((MacroButton)root.findViewById(R.id.macroButton3)).setButtonId("Button3");
+        ((MacroButton)root.findViewById(R.id.macroButton4)).setButtonId("Button4");
+        //is there a way to do this more cleanly?
         return root;
     }
 
@@ -63,7 +69,7 @@ public class CanvasFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //set to fullscreen
-        getView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        requireView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -78,7 +84,7 @@ public class CanvasFragment extends Fragment {
         if (networkManager != null) {
             try {
                 networkManager.closeConnection();
-                ((MainActivity) getActivity()).setNetworkManager(null);
+                ((MainActivity) requireActivity()).setNetworkManager(null);
             } catch (IOException | NullPointerException exception) {
                 Toast.makeText(getContext(), "Failed to close connection", Toast.LENGTH_LONG).show();
             }

@@ -36,7 +36,7 @@ public class ConnectFragment extends Fragment {
                     NetworkManager networkManager = new NetworkManager(port, ip);//throws unknown host, io exception
                     //this is bad
                     ((MainActivity) requireActivity()).setNetworkManager(networkManager);
-                    getActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.action_connectFragment_to_canvasFragment));
+                    requireActivity().runOnUiThread(() -> Navigation.findNavController(view).navigate(R.id.action_connectFragment_to_canvasFragment));
                 }catch (NumberFormatException numberFormatException){
                     requireActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Invalid Port Number", Toast.LENGTH_LONG).show());
                     numberFormatException.printStackTrace();

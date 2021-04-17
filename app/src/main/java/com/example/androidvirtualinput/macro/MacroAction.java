@@ -66,4 +66,8 @@ public class MacroAction extends InputAction {
     public ArrayList<Integer> getKeys() {
         return keys;
     }
+
+    public String getName() {
+        return name;
+    }
 }

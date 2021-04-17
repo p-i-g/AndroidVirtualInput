@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">AndroidVirtualInput</string>
-    <string name="canvas_hover">Hover at (%f, %f)</string>
-    <string name="canvas_touch">Touch at (%f, %f), pressure: %f</string>
     <string name="ip_address">IP Address</string>
     <string name="port">Port</string>
     <string name="enter_port_number">Enter Port Number</string>

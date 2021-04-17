@@ -1,6 +1,7 @@
 package com.example.androidvirtualinput.macro;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 public class MacroButton extends androidx.appcompat.widget.AppCompatButton implements View.OnClickListener, EditButtonDialog.DialogClickListener {
     private MacroAction buttonAction;
     private String[] keyMapping;
+
+    private String buttonId;
 
     public MacroButton(@NonNull Context context) {
         super(context);
@@ -87,11 +90,22 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         }
 
         buttonAction.changeAction(keys, name);
-        //todo file stuff
+        //store setting
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+        editor.putString(buttonId, buttonAction.toString());
+        editor.apply();
     }
     //this does nothing
     @Override
     public void onNegativeClick(EditButtonDialog dialog){
 
+    }
+
+    //set the button id in activity
+    public void setButtonId(String buttonId){
+        this.buttonId = buttonId;
+        String actionString = getContext().getSharedPreferences("Settings", Context.MODE_PRIVATE).getString(buttonId, "Undo:17,90");
+        buttonAction = new MacroAction(actionString);
+        setText(buttonAction.getName());
     }
 }
