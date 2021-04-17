@@ -55,15 +55,22 @@ public class CanvasFragment extends Fragment {
 //        });
         View root = inflater.inflate(R.layout.fragment_canvas, container, false);
         requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         //set to fullscreen
-        root.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        getView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN);
-        return root;
     }
+
 
     @Override
     public void onPause() {
