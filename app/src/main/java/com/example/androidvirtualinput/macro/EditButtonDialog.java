@@ -42,7 +42,7 @@ public class EditButtonDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         //for inflating the alert layout
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View root = inflater.inflate(R.layout.dialog_layout, null);
+        View root = inflater.inflate(R.layout.button_settings_dialog, null);
         nameEditText = root.findViewById(R.id.editText);
         nameEditText.setText(name);
         //other lines for keys will be added

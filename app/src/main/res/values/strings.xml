@@ -7,4 +7,8 @@
     <string name="connect">Connect</string>
     <string name="key">"Key %d"</string>
     <string name="name">Name</string>
+    <string name="strict_palm_rejection">Strict Palm Rejection</string>
+    <string name="double_tap">Double Tap</string>
+    <string name="single_tap">Single Tap</string>
+    <string name="fling">Fling</string>
 </resources>
