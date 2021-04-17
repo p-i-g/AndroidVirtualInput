@@ -1,5 +1,7 @@
 package com.example.androidvirtualinput.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +28,22 @@ public class ConnectFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_connect, container, false);
         EditText editTextIp = view.findViewById(R.id.editTextIp);
         EditText editTextPort = view.findViewById(R.id.editTextPort);
+        //get from shared preferences
+        SharedPreferences preferences = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        editTextIp.setText(preferences.getString("IP", "192.168."));
+        editTextPort.setText(preferences.getString("Port", "3939"));
         //the only reason why this class exists
         view.findViewById(R.id.connectButton).setOnClickListener(view1 -> {
+            int port = Integer.parseInt(editTextPort.getText().toString());//throws number format exception, checks for port
+            String ip = editTextIp.getText().toString();
+            //save settings
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("IP", ip);
+            editor.putString("Port", editTextPort.getText().toString());
+            editor.apply();
             //initialize network
             new Thread(() -> {
                 try{
-                    int port = Integer.parseInt(editTextPort.getText().toString());//throws number format exception, checks for port
-                    String ip = editTextIp.getText().toString();
                     NetworkManager networkManager = new NetworkManager(port, ip);//throws unknown host, io exception
                     //this is bad
                     ((MainActivity) requireActivity()).setNetworkManager(networkManager);
