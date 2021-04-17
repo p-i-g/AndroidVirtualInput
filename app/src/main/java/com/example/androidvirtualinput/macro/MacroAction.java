@@ -45,7 +45,6 @@ public class MacroAction extends InputAction {
                 result.append(",");
             }
         }
-
         return result.toString();
     }
     //for saving locally
@@ -62,5 +61,9 @@ public class MacroAction extends InputAction {
         }
 
         return result.toString();
+    }
+
+    public ArrayList<Integer> getKeys() {
+        return keys;
     }
 }

@@ -28,6 +28,9 @@ public class EditButtonDialog extends DialogFragment {
     ArrayList<EditText> keyInputs;
     EditText nameEditText;
     LinearLayout linearLayout;
+    //for setting the initial values
+    ArrayList<String> initialKeys;
+    CharSequence name;
     //for interfacing with the macro button
     public interface DialogClickListener{
         void onPositiveClick(EditButtonDialog dialog);
@@ -41,12 +44,13 @@ public class EditButtonDialog extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View root = inflater.inflate(R.layout.dialog_layout, null);
         nameEditText = root.findViewById(R.id.editText);
+        nameEditText.setText(name);
         //other lines for keys will be added
         linearLayout = root.findViewById(R.id.linearLayout);
         builder.setTitle("Macro Settings").setView(root).setPositiveButton("Save", (dialog, which) -> listener.onPositiveClick(this)).setNegativeButton("Cancel", ((dialog, which) -> listener.onNegativeClick(this)));
         //add the rows for keys
         keyInputs = new ArrayList<>();
-        addRow("Control", inflater, 1);
+        addInitialKeys(initialKeys, inflater);
         return builder.create();
     }
     //helper method for adding rows
@@ -71,7 +75,7 @@ public class EditButtonDialog extends DialogFragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.length() != 0 && !changed && !s.equals("null")){
-                    addRow("Z", inflater, ++count);
+                    addRow("Z", inflater, count++);
                     changed = true;
                 }
             }
@@ -82,6 +86,24 @@ public class EditButtonDialog extends DialogFragment {
             }
         });
         linearLayout.addView(row);
+    }
+
+    private void addInitialKeys(ArrayList<String> initialKeys, LayoutInflater inflater){
+        int count  = 1;
+        for(; count <= initialKeys.size(); count ++) {
+            @SuppressLint("InflateParams") View row = inflater.inflate(R.layout.dialog_row, null);
+            TextView title = row.findViewById(R.id.textView);
+            AutoCompleteTextView key = row.findViewById(R.id.editText);
+            keyInputs.add(key);
+            title.setText(String.format(getString(R.string.key), count));
+            key.setText(initialKeys.get(count - 1));
+            //for autocomplete
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.keys, android.R.layout.simple_dropdown_item_1line);
+            key.setAdapter(adapter);
+
+            linearLayout.addView(row);
+        }
+        addRow("Control", inflater, count);
     }
 
     public void setListener(DialogClickListener listener) {

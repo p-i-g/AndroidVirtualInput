@@ -34,6 +34,10 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
     }
 
     public void initialize(){
+        //todo
+        buttonAction = new MacroAction("test:17,90");
+        //get the mapping array
+        keyMapping = getResources().getStringArray(R.array.keys);
         //make the button round
         setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.button_background));
         setOnClickListener(this);
@@ -41,13 +45,20 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         setOnLongClickListener(v -> {
             if(getContext() instanceof FragmentActivity) {
                 EditButtonDialog dialog = new EditButtonDialog();
+                //set the initial values
+                dialog.name = getText();
+                ArrayList<Integer> keyCodes = buttonAction.getKeys();
+                ArrayList<String> keys = new ArrayList<>();
+                for(int i : keyCodes){
+                    keys.add(keyMapping[i]);
+                }
+                dialog.initialKeys = keys;
                 dialog.setListener(this);
                 dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit settings");
             }
             return true;
         });
-        //get the mapping array
-        keyMapping = getResources().getStringArray(R.array.keys);
+        //make it look decent
         setSingleLine(true);
     }
     //the only reason why this class exists
@@ -66,7 +77,7 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         //getting the keys
         String key;
         for(int i = 0; i < dialog.keyInputs.size(); i++){
-            key = dialog.keyInputs.get(i).toString();
+            key = dialog.keyInputs.get(i).getText().toString();
             //iterating through the mapping
             for(int j = 0; j < keyMapping.length; j++){
                 if(keyMapping[j].equals(key) && !key.equals("null")){
