@@ -39,7 +39,7 @@ public class EditButtonDialog extends DialogFragment {
     @NotNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         //for inflating the alert layout
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View root = inflater.inflate(R.layout.button_settings_dialog, null);

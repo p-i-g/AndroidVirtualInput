@@ -37,8 +37,6 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
     }
 
     public void initialize(){
-        //todo
-        buttonAction = new MacroAction("test:17,90");
         //get the mapping array
         keyMapping = getResources().getStringArray(R.array.keys);
         //make the button round
@@ -57,7 +55,7 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
                 }
                 dialog.initialKeys = keys;
                 dialog.setListener(this);
-                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit settings");
+                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit button settings");
             }
             return true;
         });

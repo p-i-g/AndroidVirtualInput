@@ -6,26 +6,33 @@ import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GestureDetectorCompat;
+import androidx.fragment.app.FragmentActivity;
 
+import com.example.androidvirtualinput.R;
 import com.example.androidvirtualinput.macro.MacroAction;
 import com.example.androidvirtualinput.ui.MainActivity;
+
+import java.util.ArrayList;
 
 //I probably shouldn't extend constraint layout
 //Basically constraint layout but with on touch and on hover overridden
 //also a bunch of gestures
-public class CanvasView extends ConstraintLayout {
-    private final boolean palmRejection = true;
+public class CanvasView extends ConstraintLayout implements EditCanvasDialog.DialogClickListener {
+    private boolean palmRejection = true;
     //for gestures
     private GestureDetectorCompat gestureDetector;
     //gesture actions
     private MacroAction flingAction;
     private MacroAction doubleTapAction;
     private MacroAction singleTapAction;
+
+    private String[] keyMapping;
 
     public CanvasView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -68,6 +75,35 @@ public class CanvasView extends ConstraintLayout {
         flingAction = new MacroAction(preferences.getString("Fling", "Undo:17,90"));
         doubleTapAction = new MacroAction(preferences.getString("Double Tap", "Undo:17,90"));
         singleTapAction = new MacroAction(preferences.getString("Single Tap", "Undo:17,90"));
+
+        keyMapping = getResources().getStringArray(R.array.keys);
+        //show the dialog on long click
+        setOnLongClickListener(v ->{
+            if(getContext() instanceof FragmentActivity) {
+                EditCanvasDialog dialog = new EditCanvasDialog();
+                //set the initial values
+                dialog.initialSingleTap = new ArrayList<>();
+                dialog.initialDoubleTap = new ArrayList<>();
+                dialog.initialFling = new ArrayList<>();
+                setInitialValues(singleTapAction, dialog.initialSingleTap);
+                setInitialValues(doubleTapAction, dialog.initialDoubleTap);
+                setInitialValues(flingAction, dialog.initialFling);
+                dialog.palmRejection = palmRejection;
+
+                dialog.listener = this;
+                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit canvas settings");
+            }
+            return true;
+        });
+    }
+    //helper method for generating dialog
+    private void setInitialValues(MacroAction macroAction, ArrayList<String> initialKeys){
+            //set the initial values
+            ArrayList<Integer> keyCodes = macroAction.getKeys();
+            initialKeys.clear();
+            for(int i : keyCodes){
+                initialKeys.add(keyMapping[i]);
+            }
     }
     //for touch corresponds to InContact in the windows thing
     @SuppressLint("ClickableViewAccessibility")
@@ -99,7 +135,43 @@ public class CanvasView extends ConstraintLayout {
         return true;
     }
 
-    //listener
+    @Override
+    public void onPositiveClick(EditCanvasDialog dialog) {
+        //change macro for each gesture
+        changeMacro(dialog.singleTapInputs, singleTapAction, "Single Tap");
+        changeMacro(dialog.doubleTapInputs, doubleTapAction, "Double Tap");
+        changeMacro(dialog.flingInputs, flingAction, "Fling");
+        //change palm rejection
+        palmRejection = dialog.button.isChecked();
+    }
+    //helper method for changing macro
+    public void changeMacro(ArrayList<EditText> keyInputs, MacroAction macroAction, String macroId){
+        ArrayList<Integer> keys = new ArrayList<>();
+        //getting the keys
+        String key;
+        for(int i = 0; i < keyInputs.size(); i++){
+            key = keyInputs.get(i).getText().toString();
+            //iterating through the mapping
+            for(int j = 0; j < keyMapping.length; j++){
+                if(keyMapping[j].equals(key) && !key.equals("null")){
+                    keys.add(j);
+                }
+            }
+        }
+
+        macroAction.changeAction(keys, "CanvasMacro");
+        //store setting
+        SharedPreferences.Editor editor = getContext().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
+        editor.putString(macroId, macroAction.toString());
+        editor.apply();
+    }
+
+    @Override
+    public void onNegativeClick(EditCanvasDialog dialog) {
+        //this does nothing
+    }
+
+    //listener for gestures
     class CanvasGestureListener extends GestureDetector.SimpleOnGestureListener{
         @Override
         public boolean onDown(MotionEvent event){

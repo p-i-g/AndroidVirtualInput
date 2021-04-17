@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/canvasFragment"
-        android:name="com.example.androidvirtualinput.canvas.CanvasFragment"
+        android:name="com.example.androidvirtualinput.ui.CanvasFragment"
         android:label="CanvasFragment" >
         <action
             android:id="@+id/action_canvasFragment_to_connectFragment"

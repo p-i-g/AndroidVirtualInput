@@ -11,10 +11,6 @@ public class MacroAction extends InputAction {
 
     private String name;
 
-    public MacroAction(ArrayList<Integer> keys, String name) {
-        this.keys = keys;
-        this.name = name;
-    }
     //NAME:KEY1,KEY2,KEY3...
     public MacroAction(String actionString){
         keys = new ArrayList<>();

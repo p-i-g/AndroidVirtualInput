@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.canvas;
+package com.example.androidvirtualinput.ui;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
