@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.canvas;
+package com.qiuziming.androidvirtualinput.canvas;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,9 +14,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.androidvirtualinput.R;
-import com.example.androidvirtualinput.macro.MacroAction;
-import com.example.androidvirtualinput.ui.MainActivity;
+import com.qiuziming.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.macro.MacroAction;
+import com.qiuziming.androidvirtualinput.ui.MainActivity;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.macro;
+package com.qiuziming.androidvirtualinput.macro;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,8 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.androidvirtualinput.R;
-import com.example.androidvirtualinput.ui.MainActivity;
+import com.qiuziming.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.ui.MainActivity;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.ui;
+package com.qiuziming.androidvirtualinput.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.androidvirtualinput.R;
-import com.example.androidvirtualinput.network.NetworkManager;
+import com.qiuziming.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.network.NetworkManager;
 
 import java.io.IOException;
 import java.net.UnknownHostException;

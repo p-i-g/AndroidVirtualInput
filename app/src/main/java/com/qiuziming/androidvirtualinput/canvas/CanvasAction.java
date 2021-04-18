@@ -1,6 +1,6 @@
-package com.example.androidvirtualinput.canvas;
+package com.qiuziming.androidvirtualinput.canvas;
 
-import com.example.androidvirtualinput.network.InputAction;
+import com.qiuziming.androidvirtualinput.network.InputAction;
 
 //for controlling the pen
 public class CanvasAction extends InputAction {

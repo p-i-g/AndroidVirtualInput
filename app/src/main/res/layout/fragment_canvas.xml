@@ -8,7 +8,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <com.example.androidvirtualinput.canvas.CanvasView
+    <com.qiuziming.androidvirtualinput.canvas.CanvasView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/canvas_border"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </com.example.androidvirtualinput.canvas.CanvasView>
+    </com.qiuziming.androidvirtualinput.canvas.CanvasView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -59,7 +59,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
-    <com.example.androidvirtualinput.macro.MacroButton
+    <com.qiuziming.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <com.example.androidvirtualinput.macro.MacroButton
+    <com.qiuziming.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton2"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -83,7 +83,7 @@
         app:layout_constraintStart_toStartOf="@+id/macroButton"
         app:layout_constraintTop_toBottomOf="@+id/macroButton" />
 
-    <com.example.androidvirtualinput.macro.MacroButton
+    <com.qiuziming.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton3"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="@+id/macroButton2"
         app:layout_constraintTop_toBottomOf="@+id/macroButton2" />
 
-    <com.example.androidvirtualinput.macro.MacroButton
+    <com.qiuziming.androidvirtualinput.macro.MacroButton
         android:id="@+id/macroButton4"
         android:layout_width="0dp"
         android:layout_height="0dp"

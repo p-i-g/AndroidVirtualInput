@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.network;
+package com.qiuziming.androidvirtualinput.network;
 
 public abstract class InputAction {
     //string that can be printed to socket

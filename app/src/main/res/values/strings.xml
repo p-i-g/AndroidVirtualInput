@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidVirtualInput</string>
+    <string name="app_name">Android Graphics Tablet</string>
     <string name="ip_address">IP Address</string>
     <string name="port">Port</string>
     <string name="enter_port_number">Enter Port Number</string>

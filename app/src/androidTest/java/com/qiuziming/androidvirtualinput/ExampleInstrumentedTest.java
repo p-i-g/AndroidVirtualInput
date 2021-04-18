@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput;
+package com.qiuziming.androidvirtualinput;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.canvas;
+package com.qiuziming.androidvirtualinput.canvas;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -20,7 +20,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.R;
 
 import java.util.ArrayList;
 public class EditCanvasDialog extends DialogFragment {

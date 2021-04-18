@@ -1,6 +1,6 @@
-package com.example.androidvirtualinput.macro;
+package com.qiuziming.androidvirtualinput.macro;
 
-import com.example.androidvirtualinput.network.InputAction;
+import com.qiuziming.androidvirtualinput.network.InputAction;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.macro;
+package com.qiuziming.androidvirtualinput.macro;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.R;
 
 import org.jetbrains.annotations.NotNull;
 

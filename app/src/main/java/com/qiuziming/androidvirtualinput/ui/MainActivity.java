@@ -1,12 +1,12 @@
-package com.example.androidvirtualinput.ui;
+package com.qiuziming.androidvirtualinput.ui;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.androidvirtualinput.R;
-import com.example.androidvirtualinput.network.NetworkManager;
+import com.qiuziming.androidvirtualinput.R;
+import com.qiuziming.androidvirtualinput.network.NetworkManager;
 
 import java.io.IOException;
 

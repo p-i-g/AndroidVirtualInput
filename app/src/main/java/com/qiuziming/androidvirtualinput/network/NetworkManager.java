@@ -1,4 +1,4 @@
-package com.example.androidvirtualinput.network;
+package com.qiuziming.androidvirtualinput.network;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
