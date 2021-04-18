@@ -5,4 +5,4 @@ long press on button/ canvas to change settings<br/>
 pressing buttons, gestures on the canvas(fling, double tap, single tap) sends macros<br/>
 gestures only work with strict palm rejection<br/>
 <br/>
-i recommend bulding in android studio although apk does exist under releases
+i recommend building in android studio although apk does exist under releases
