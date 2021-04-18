@@ -65,7 +65,7 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
     }
     //literally faux constructor
     private void initialize(){
-        CanvasGestureListener listener = new CanvasGestureListener();
+        CanvasGestureListener listener = new CanvasGestureListener(this);
         gestureDetector = new GestureDetectorCompat(getContext(), listener);
 
         gestureDetector.setOnDoubleTapListener(listener);
@@ -77,24 +77,6 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
         singleTapAction = new MacroAction(preferences.getString("Single Tap", "Undo:17,90"));
 
         keyMapping = getResources().getStringArray(R.array.keys);
-        //show the dialog on long click
-        setOnLongClickListener(v ->{
-            if(getContext() instanceof FragmentActivity) {
-                EditCanvasDialog dialog = new EditCanvasDialog();
-                //set the initial values
-                dialog.initialSingleTap = new ArrayList<>();
-                dialog.initialDoubleTap = new ArrayList<>();
-                dialog.initialFling = new ArrayList<>();
-                setInitialValues(singleTapAction, dialog.initialSingleTap);
-                setInitialValues(doubleTapAction, dialog.initialDoubleTap);
-                setInitialValues(flingAction, dialog.initialFling);
-                dialog.palmRejection = palmRejection;
-
-                dialog.listener = this;
-                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit canvas settings");
-            }
-            return true;
-        });
     }
     //helper method for generating dialog
     private void setInitialValues(MacroAction macroAction, ArrayList<String> initialKeys){
@@ -173,6 +155,12 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
 
     //listener for gestures
     class CanvasGestureListener extends GestureDetector.SimpleOnGestureListener{
+        private CanvasView canvasView;
+
+        public CanvasGestureListener(CanvasView canvasView) {
+            this.canvasView = canvasView;
+        }
+
         @Override
         public boolean onDown(MotionEvent event){
             return true;
@@ -194,6 +182,24 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
         public boolean onSingleTapConfirmed(MotionEvent e) {
             ((MainActivity) getContext()).getNetworkManager().printAction(singleTapAction);
             return true;
+        }
+        //show dialog
+        @Override
+        public void onLongPress(MotionEvent e) {
+            if(getContext() instanceof FragmentActivity) {
+                EditCanvasDialog dialog = new EditCanvasDialog();
+                //set the initial values
+                dialog.initialSingleTap = new ArrayList<>();
+                dialog.initialDoubleTap = new ArrayList<>();
+                dialog.initialFling = new ArrayList<>();
+                setInitialValues(singleTapAction, dialog.initialSingleTap);
+                setInitialValues(doubleTapAction, dialog.initialDoubleTap);
+                setInitialValues(flingAction, dialog.initialFling);
+                dialog.palmRejection = palmRejection;
+
+                dialog.listener = canvasView;
+                dialog.show(((FragmentActivity) getContext()).getSupportFragmentManager(), "edit canvas settings");
+            }
         }
     }
 }

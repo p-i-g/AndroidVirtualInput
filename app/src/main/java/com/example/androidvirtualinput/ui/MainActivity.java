@@ -31,8 +31,21 @@ public class MainActivity extends AppCompatActivity {
         return networkManager;
     }
 
+//    @Override
+//    public void onPause() {
+//        if(networkManager != null) {
+//            try {
+//                networkManager.closeConnection();
+//                networkManager = null;
+//            } catch (IOException | NullPointerException exception) {
+//                Toast.makeText(this, "Failed to close connection", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//        super.onPause();
+//    }
+
     @Override
-    public void onPause() {
+    protected void onStop() {
         if(networkManager != null) {
             try {
                 networkManager.closeConnection();
@@ -41,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to close connection", Toast.LENGTH_LONG).show();
             }
         }
-        super.onPause();
+        super.onStop();
     }
+
     //this is bad but I don't think I can parcelize the network manager
     public void setNetworkManager(NetworkManager networkManager) {
         this.networkManager = networkManager;

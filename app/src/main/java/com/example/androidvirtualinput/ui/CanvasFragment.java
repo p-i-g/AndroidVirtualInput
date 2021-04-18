@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.androidvirtualinput.R;
 import com.example.androidvirtualinput.macro.MacroButton;
@@ -75,6 +76,10 @@ public class CanvasFragment extends Fragment {
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN);
+
+        if(((MainActivity) getActivity()).getNetworkManager() == null){
+            Navigation.findNavController(getView()).navigate(R.id.action_canvasFragment_to_connectFragment);
+        }
     }
 
 

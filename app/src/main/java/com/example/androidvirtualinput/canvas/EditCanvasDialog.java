@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.androidvirtualinput.R;
@@ -40,7 +41,7 @@ public class EditCanvasDialog extends DialogFragment {
     LinearLayout doubleTapLinearLayout;
     LinearLayout flingLinearLayout;
 
-    ScrollView scrollView;
+    NestedScrollView scrollView;
     //initial palm rejection
     boolean palmRejection;
     //the same interface
