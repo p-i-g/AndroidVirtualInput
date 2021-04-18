@@ -7,4 +7,4 @@ gestures only work with strict palm rejection<br/>
 <br/>
 i recommend building in android studio although apk does exist under releases<br/>
 <br/>
-server: github.com/road-pig/AndroidInputServer
+server: https://github.com/road-pig/AndroidInputDriver
