@@ -18,31 +18,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        new Thread(() -> {
-//            try {
-//                networkManager = new NetworkManager(PORT, IP);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
     }
     //this feels a bit workaroundish
     public NetworkManager getNetworkManager(){
         return networkManager;
     }
-
-//    @Override
-//    public void onPause() {
-//        if(networkManager != null) {
-//            try {
-//                networkManager.closeConnection();
-//                networkManager = null;
-//            } catch (IOException | NullPointerException exception) {
-//                Toast.makeText(this, "Failed to close connection", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//        super.onPause();
-//    }
 
     @Override
     protected void onStop() {

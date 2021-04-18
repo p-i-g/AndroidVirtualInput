@@ -37,31 +37,11 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
     public CanvasView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initialize();
-//        TypedArray a = context.getTheme().obtainStyledAttributes(
-//                attrs,
-//                R.styleable.CanvasView,
-//                0, 0);
-//        int mIdReference = a.getResourceId(R.styleable.CanvasView_centerText, 0);
-//        System.out.println(mIdReference);
-//        ViewGroup parent = this;
-//        while ((centerText = parent.findViewById(mIdReference)) == null) {
-//            parent = (ViewGroup) parent.getParent();
-//        }
     }
 
     public CanvasView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize();
-//        TypedArray a = context.getTheme().obtainStyledAttributes(
-//                attrs,
-//                R.styleable.CanvasView,
-//                0, 0);
-//        int mIdReference = a.getResourceId(R.styleable.CanvasView_centerText, 0);
-//        System.out.println(mIdReference);
-//        ViewGroup parent = this;
-//        while ((centerText = parent.findViewById(mIdReference)) == null) {
-//            parent = (ViewGroup) parent.getParent();
-//        }
     }
     //literally faux constructor
     private void initialize(){
@@ -102,7 +82,6 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
         double posX = motionEvent.getX() / getWidth();
         double posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
-//        centerText.setText(getContext().getString(R.string.canvas_touch, posX, posY, pressure));
         ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.DOWN, pressure));//this cast is bad
         return true;
     }
@@ -112,7 +91,6 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
         float posX = motionEvent.getX() / getWidth();
         float posY = motionEvent.getY() / getHeight();
         double pressure = motionEvent.getPressure();
-//        centerText.setText(getContext().getString(R.string.canvas_hover, posX, posY));
         ((MainActivity) getContext()).getNetworkManager().printAction(new CanvasAction(posX, posY, CanvasAction.HOVER, pressure));//this cast is bad
         return true;
     }
@@ -155,7 +133,7 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
 
     //listener for gestures
     class CanvasGestureListener extends GestureDetector.SimpleOnGestureListener{
-        private CanvasView canvasView;
+        private final CanvasView canvasView;
 
         public CanvasGestureListener(CanvasView canvasView) {
             this.canvasView = canvasView;
