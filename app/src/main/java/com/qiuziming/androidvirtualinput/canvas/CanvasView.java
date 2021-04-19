@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -103,6 +104,14 @@ public class CanvasView extends ConstraintLayout implements EditCanvasDialog.Dia
         changeMacro(dialog.flingInputs, flingAction, "Fling");
         //change palm rejection
         palmRejection = dialog.button.isChecked();
+
+        //set the fragment to fullscreen
+        ((View) getParent()).setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
     //helper method for changing macro
     public void changeMacro(ArrayList<EditText> keyInputs, MacroAction macroAction, String macroId){

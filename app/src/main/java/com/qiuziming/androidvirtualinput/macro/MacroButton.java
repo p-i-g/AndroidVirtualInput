@@ -1,5 +1,6 @@
 package com.qiuziming.androidvirtualinput.macro;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
@@ -61,6 +62,7 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         });
         //make it look decent
         setSingleLine(true);
+        setTextColor(getResources().getColor(R.color.white, getContext().getTheme()));
     }
     //the only reason why this class exists
     @Override
@@ -92,6 +94,14 @@ public class MacroButton extends androidx.appcompat.widget.AppCompatButton imple
         SharedPreferences.Editor editor = getContext().getSharedPreferences("Settings", Context.MODE_PRIVATE).edit();
         editor.putString(buttonId, buttonAction.toString());
         editor.apply();
+
+        //set the fragment to fullscreen
+        ((View) getParent()).setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
     //this does nothing
     @Override

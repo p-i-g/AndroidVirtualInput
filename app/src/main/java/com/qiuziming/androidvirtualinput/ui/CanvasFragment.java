@@ -34,7 +34,20 @@ public class CanvasFragment extends Fragment {
         ((MacroButton)root.findViewById(R.id.macroButton2)).setButtonId("Button2");
         ((MacroButton)root.findViewById(R.id.macroButton3)).setButtonId("Button3");
         ((MacroButton)root.findViewById(R.id.macroButton4)).setButtonId("Button4");
-        //is there a way to do this more cleanly?
+
+        root.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    requireView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN);
+                }
+            }
+        });
         return root;
     }
 
